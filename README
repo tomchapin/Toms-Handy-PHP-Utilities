@@ -7,12 +7,18 @@ Description:
 A library of various handy php functions which have
 either been written (or compiled from various online sources) 
 --------------------------------------------------------------------
-
 Change Log:
+--------------------------------------------------------------------
+
+Version 1.0.5:
+
+Introduction of the following function:
+
+build_select_options($options=array())
 
 --------------------------------------------------------------------
+
 Version 1.0
---------------------------------------------------------------------
 
 Introduction of the following functions:
 

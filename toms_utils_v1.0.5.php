@@ -2,7 +2,7 @@
 
 // --------------------------------------------------------------------
 // Tom's Handy Utilities
-// Version: 1.05
+// Version: 1.0.5
 // Author: Tom Chapin (tchapin@gmail.com)
 // URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
 // --------------------------------------------------------------------
