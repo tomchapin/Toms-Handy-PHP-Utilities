@@ -1,5 +1,29 @@
+--------------------------------------------------------------------
 Tom's Handy Utilities
-Version: 1.0
-Description: A library of various handy php functions
 Author: Tom Chapin (tchapin@gmail.com)
-Note: Functions listed here have either been written (or compiled from various online sources)
+URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
+--------------------------------------------------------------------
+Description:
+A library of various handy php functions which have
+either been written (or compiled from various online sources) 
+--------------------------------------------------------------------
+
+Change Log:
+
+--------------------------------------------------------------------
+Version 1.0
+--------------------------------------------------------------------
+
+Introduction of the following functions:
+
+buffer_display($text_val=NULL)
+flush_buffers()
+objectsIntoArray($arrObjData, $arrSkipIndices = array())
+get_field_names($table_name=NULL)
+get_array_value($tmp_array=NULL, $array_index=NULL, $invalid_return=NULL)
+redirect($url)
+redirect_to_page($pagename="/")
+build_SQL_INSERT_strings_from_array($tmpArray = array())
+build_SQL_UPDATE_string_from_array($tmpArray = array())
+generate_mysql_date($dateString="")
+download_file($file_source, $file_target)

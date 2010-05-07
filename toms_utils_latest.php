@@ -1,9 +1,15 @@
 <?php
 
+// --------------------------------------------------------------------
 // Tom's Handy Utilities
 // Version: 1.0
-// Description: A library of various handy php functions
-// Note: Functions listed here have either been written (or compiled from various online sources) by Tom Chapin (tchapin@gmail.com)
+// Author: Tom Chapin (tchapin@gmail.com)
+// URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
+// --------------------------------------------------------------------
+// Description:
+// A library of various handy php functions which have
+// either been written (or compiled from various online sources) 
+// --------------------------------------------------------------------
 
 // Shortcut function used to display a string (or an array) along with a line break and then flush the output buffers.
 function buffer_display($text_val=NULL){
