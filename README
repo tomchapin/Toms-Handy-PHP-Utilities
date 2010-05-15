@@ -10,6 +10,14 @@ either been written (or compiled from various online sources)
 Change Log:
 --------------------------------------------------------------------
 
+Version 1.0.6:
+
+Introduction of the following function:
+
+break_array_into_pieces($tmp_array=NULL, $column_max_number=3)
+
+--------------------------------------------------------------------
+
 Version 1.0.5:
 
 Introduction of the following function:
