@@ -3,6 +3,7 @@
 // --------------------------------------------------------------------
 // Tom's Handy Utilities
 // Version: 1.06
+// Release Date: 05/14/2010
 // Author: Tom Chapin (tchapin@gmail.com)
 // URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
 // --------------------------------------------------------------------
