@@ -11,6 +11,12 @@ either been written (or compiled from various online sources)
 Change Log:
 --------------------------------------------------------------------
 
+= Release 1.0.7.2 =
+== Features ==
+* None
+== Bug Fixes ==
+* Fixed bug with cached file error occasionally displaying
+
 = Release 1.0.7 =
 == Features ==
 * download_file_with_fread($remote_url='', $local_filename='')
