@@ -2,7 +2,7 @@
 
 // --------------------------------------------------------------------
 // Tom's Handy Utilities
-// Version: 1.07
+// Version: 1.07.2
 // Release Date: 05/18/2010
 // Author: Tom Chapin (tchapin@gmail.com)
 // URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
@@ -466,7 +466,7 @@ function cache_remote_file($options=array()){
 				// default to fread method (simpler)
 				$download_result = download_file_with_fread($remote_url, $cache_file_path);
 			}
-			$download_result=false;
+			$use_cached_file=false;
 			// Check download
 			if($download_result && file_exists($cache_file_path)){
 				// File is cached now so we can use it!
