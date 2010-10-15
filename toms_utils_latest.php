@@ -2,8 +2,8 @@
 
 // --------------------------------------------------------------------
 // Tom's Handy Utilities
-// Version: 1.0.7.4
-// Release Date: 10/11/2010
+// Version: 1.0.7.5
+// Release Date: 10/15/2010
 // Author: Tom Chapin (tchapin@gmail.com)
 // URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
 // --------------------------------------------------------------------
@@ -514,10 +514,59 @@ function get_visitor_IP(){
 }
 
 // Function used to fix funky characters (such as characters pasted in from Word) in a string and convert them to UTF-8
-// Parameters: $instr (string)
+// Parameters:
+// $instr (required string)
+// $normalize_special_characters (optional boolean) - whether or not to replace special characters with normal ones
 // Returns: string
-function fix_character_encoding($instr = ''){
-	if(mb_check_encoding($instr,'UTF-8'))return $instr; // no need for the rest if it's all valid UTF-8 already
+function fix_character_encoding($instr = '', $normalize_special_characters = false){
+	
+	// Replace accented and special characters with normal ones
+	if($normalize_special_characters == true){
+
+		$instr = str_replace(chr(130), ',', $instr);    // baseline single quote
+		$instr = str_replace(chr(131), 'NLG', $instr);  // florin
+		$instr = str_replace(chr(132), '"', $instr);    // baseline double quote
+		$instr = str_replace(chr(133), '...', $instr);  // ellipsis
+		$instr = str_replace(chr(134), '**', $instr);   // dagger (a second footnote)
+		$instr = str_replace(chr(135), '***', $instr);  // double dagger (a third footnote)
+		$instr = str_replace(chr(136), '^', $instr);    // circumflex accent
+		$instr = str_replace(chr(137), 'o/oo', $instr); // permile
+		$instr = str_replace(chr(138), 'Sh', $instr);   // S Hacek
+		$instr = str_replace(chr(139), '<', $instr);    // left single guillemet
+		$instr = str_replace(chr(140), 'OE', $instr);   // OE ligature
+		$instr = str_replace(chr(145), "'", $instr);    // left single quote
+		$instr = str_replace(chr(146), "'", $instr);    // right single quote
+		$instr = str_replace(chr(147), '"', $instr);    // left double quote
+		$instr = str_replace(chr(148), '"', $instr);    // right double quote
+		$instr = str_replace(chr(149), '-', $instr);    // bullet
+		$instr = str_replace(chr(150), '-', $instr);    // endash
+		$instr = str_replace(chr(151), '--', $instr);   // emdash
+		$instr = str_replace(chr(152), '~', $instr);    // tilde accent
+		$instr = str_replace(chr(153), '(TM)', $instr); // trademark ligature
+		$instr = str_replace(chr(154), 'sh', $instr);   // s Hacek
+		$instr = str_replace(chr(155), '>', $instr);    // right single guillemet
+		$instr = str_replace(chr(156), 'oe', $instr);   // oe ligature
+		$instr = str_replace(chr(159), 'Y', $instr);    // Y Dieresis
+
+		// Other accented and funky characters	
+		$unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+									'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+									'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+									'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+									'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
+		$instr = strtr( $instr, $unwanted_array );
+	
+		# Bullets, dashes, and trademarks
+		$instr = ereg_replace( chr(149), "&#8226;", $instr );    # bullet •
+		$instr = ereg_replace( chr(150), "&ndash;", $instr );    # en dash
+		$instr = ereg_replace( chr(151), "&mdash;", $instr );    # em dash
+		$instr = ereg_replace( chr(153), "&#8482;", $instr );    # trademark
+		$instr = ereg_replace( chr(169), "&copy;", $instr );     # copyright mark
+		$instr = ereg_replace( chr(174), "&reg;", $instr );      # registration mark 
+	}
+	
+	// Check for UTF-8 encoding issues and attempt to repair them	
+	if(mb_check_encoding($string,'UTF-8'))return $instr; // no need for the rest if it's all valid UTF-8 already
 	$outstr='';
 	$cp1252_map = array (
 		"\xc2\x80" => "\xe2\x82\xac",
