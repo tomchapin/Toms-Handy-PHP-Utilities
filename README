@@ -11,6 +11,19 @@ either been written (or compiled from various online sources)
 Change Log:
 --------------------------------------------------------------------
 
+
+= Release 1.0.7.4 =
+== Features ==
+* fix_character_encoding()
+== Bug Fixes ==
+* None
+
+= Release 1.0.7.3 =
+== Features ==
+* get_visitor_IP()
+== Bug Fixes ==
+* None
+
 = Release 1.0.7.2 =
 == Features ==
 * None
