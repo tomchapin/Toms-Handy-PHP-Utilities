@@ -2,8 +2,8 @@
 
 // --------------------------------------------------------------------
 // Tom's Handy Utilities
-// Version: 1.0.7.5
-// Release Date: 10/15/2010
+// Version: 1.0.8
+// Release Date: 02/28/2012
 // Author: Tom Chapin (tchapin@gmail.com)
 // URL: http://github.com/tomchapin/Toms-Handy-PHP-Utilities
 // --------------------------------------------------------------------
@@ -599,6 +599,13 @@ function fix_character_encoding($instr = '', $normalize_special_characters = fal
 	);
 	$outstr = strtr(utf8_encode($instr), $cp1252_map);
 	return $outstr;
+}
+
+// Function used to detect if the visitor's HTTP User Agent matches one of the common mobile browsers
+// Parameters: none
+// Returns: (boolean) - true if browser is mobile, false if desktop browser or other
+function mobile_browser_detected() {
+    return (preg_match('/(alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|sagem|sharp|sie-|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte)/i', $_SERVER['HTTP_USER_AGENT']));
 }
 	
 // -------------------------------------------------------------------------
